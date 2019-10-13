@@ -1,4 +1,4 @@
-# MMA-Python
+# GCMMA-MMA-Python
 Python code of the Method of Moving Asymptotes (Svanberg, 1987). Based on the GCMMA-MMA-code (written for MATLAB) by Krister Svanberg. The original work was taken from the http://www.smoptit.se/ under the GNU General Public License. 
 
 -----
