@@ -2,7 +2,7 @@
 ### MMA OPTIMIZATION ALGORITM															             ### 
 ###                                                                                                  ###
 ### Arjen Deetman                                                                                    ###
-### version 19-04-2017                                                                               ###
+### version 02-11-2019                                                                               ###
 ########################################################################################################
 
 """
@@ -60,11 +60,13 @@ This script is the "three bar truss problem":
 ########################################################################################################
 
 # Loading modules
+from __future__ import division
 from scipy.sparse import diags
 from scipy.linalg import solve
 import numpy as np
 import logging
 import sys
+import os
 
 # Import MMA functions
 from MMA import mmasub,subsolv,kktcheck
@@ -76,62 +78,64 @@ from MMA import mmasub,subsolv,kktcheck
 
 def main():
     # Logger
-    logger=setup_logger("MMA_TRUSS2.log")
+    path = os.path.dirname(os.path.realpath(__file__))
+    file = os.path.join(path, "MMA_TRUSS2.log")
+    logger = setup_logger(file)
     logger.info("Started\n")
     # Set numpy print options
     np.set_printoptions(precision=4, formatter={'float': '{: 0.4f}'.format})
     # Beam initial settings
-    m=4
-    n=3
-    epsimin=0.0000001
-    eeen=np.ones((n,1))
-    eeem=np.ones((m,1))
-    zeron=np.zeros((n,1))
-    zerom=np.zeros((m,1))
-    xval=eeen.copy()
-    xold1=xval.copy()
-    xold2=xval.copy()
-    xmin=0.001*eeen
-    xmax=3*eeen
-    low=xmin.copy()
-    upp=xmax.copy()
-    move=1.0
-    c=1000*eeem
-    d=zerom.copy()
-    a0=1
-    a=np.array([[1,1,1,0]]).T
-    outeriter=0
-    maxoutit=6
-    kkttol=0		
+    m = 4
+    n = 3
+    epsimin = 0.0000001
+    eeen = np.ones((n,1))
+    eeem = np.ones((m,1))
+    zeron = np.zeros((n,1))
+    zerom = np.zeros((m,1))
+    xval = eeen.copy()
+    xold1 = xval.copy()
+    xold2 = xval.copy()
+    xmin = 0.001*eeen
+    xmax = 3*eeen
+    low = xmin.copy()
+    upp = xmax.copy()
+    move = 1.0
+    c = 1000*eeem
+    d = zerom.copy()
+    a0 = 1
+    a = np.array([[1,1,1,0]]).T
+    outeriter = 0
+    maxoutit = 6
+    kkttol = 0		
     # Calculate function values and gradients of the objective and constraints functions
-    if outeriter==0:
-        f0val,df0dx,fval,dfdx=truss2(xval)
-        innerit=0
-        outvector1=np.concatenate((np.array([outeriter]), xval.flatten()))
-        outvector2=fval.flatten()
+    if outeriter == 0:
+        f0val,df0dx,fval,dfdx = truss2(xval)
+        innerit = 0
+        outvector1 = np.concatenate((np.array([outeriter]), xval.flatten()))
+        outvector2 = fval.flatten()
         # Log
         logger.info("outvector1 = {}".format(outvector1))
         logger.info("outvector2 = {}\n".format(outvector2))
     # The iterations starts
-    kktnorm=kkttol+10
-    outit=0
-    while (kktnorm>kkttol) and (outit<maxoutit):
-        outit+=1
-        outeriter+=1
+    kktnorm = kkttol+10
+    outit = 0
+    while (kktnorm > kkttol) and (outit < maxoutit):
+        outit += 1
+        outeriter += 1
         # The MMA subproblem is solved at the point xval:
-        xmma,ymma,zmma,lam,xsi,eta,mu,zet,s,low,upp= \
+        xmma,ymma,zmma,lam,xsi,eta,mu,zet,s,low,upp =  \
             mmasub(m,n,outeriter,xval,xmin,xmax,xold1,xold2,f0val,df0dx,fval,dfdx,low,upp,a0,a,c,d,move)
         # Some vectors are updated:
-        xold2=xold1.copy()
-        xold1=xval.copy()
-        xval=xmma.copy()
+        xold2 = xold1.copy()
+        xold1 = xval.copy()
+        xval = xmma.copy()
         # Re-calculate function values and gradients of the objective and constraints functions
-        f0val,df0dx,fval,dfdx=truss2(xval)
+        f0val,df0dx,fval,dfdx = truss2(xval)
         # The residual vector of the KKT conditions is calculated
-        residu,kktnorm,residumax= \
+        residu,kktnorm,residumax = \
             kktcheck(m,n,xmma,ymma,zmma,lam,xsi,eta,mu,zet,s,xmin,xmax,df0dx,fval,dfdx,a0,a,c,d)
-        outvector1=np.concatenate((np.array([outeriter]), xval.flatten()))
-        outvector2=fval.flatten()
+        outvector1 = np.concatenate((np.array([outeriter]), xval.flatten()))
+        outvector2 = fval.flatten()
         # Log
         logger.info("outvector1 = {}".format(outvector1))
         logger.info("outvector2 = {}".format(outvector2))
@@ -147,16 +151,16 @@ def main():
 # Setup logger
 def setup_logger(logfile):
     # Create logger
-    logger=logging.getLogger(__name__)
+    logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
     # Create console handler and set level to debug
-    ch=logging.StreamHandler()
+    ch = logging.StreamHandler()
     ch.setLevel(logging.DEBUG)
     # Create file handler and set level to debug
-    fh=logging.FileHandler(logfile)
+    fh = logging.FileHandler(logfile)
     fh.setLevel(logging.DEBUG)
     # Add formatter to ch and fh
-    formatter=logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     ch.setFormatter(formatter)
     fh.setFormatter(formatter)
     # Add ch and fh to logger
@@ -169,33 +173,33 @@ def setup_logger(logfile):
 
 # Truss function
 def truss2(xval):
-    e=np.array([[1,1,1]]).T
-    f0val=0
-    df0dx=0*e
-    D=np.diag(xval.flatten())
-    sq2=1.0/np.sqrt(2.0)
-    R=np.array([[1,sq2,0],[0,sq2,1]])
-    p1=np.array([[1,0]]).T
-    p2=np.array([[1,1]]).T
-    p3=np.array([[0,1]]).T
-    K=np.dot(R,D).dot(R.T)
-    u1=solve(K,p1)
-    u2=solve(K,p2)
-    u3=solve(K,p3)
-    compl1=np.dot(p1.T,u1)
-    compl2=np.dot(p2.T,u2)
-    compl3=np.dot(p3.T,u3)
-    volume=np.dot(e.T,xval)
-    V=3.0
-    vol1=volume-V
-    fval=np.concatenate((compl1,compl2,compl3,vol1))
-    rtu1=np.dot(R.T,u1)
-    rtu2=np.dot(R.T,u2)
-    rtu3=np.dot(R.T,u3)
-    dcompl1=-rtu1*rtu1
-    dcompl2=-rtu2*rtu2
-    dcompl3=-rtu3*rtu3
-    dfdx=np.concatenate((dcompl1.T,dcompl2.T,dcompl3.T,e.T))
+    e = np.array([[1,1,1]]).T
+    f0val = 0
+    df0dx = 0*e
+    D = np.diag(xval.flatten())
+    sq2 = 1.0/np.sqrt(2.0)
+    R = np.array([[1,sq2,0],[0,sq2,1]])
+    p1 = np.array([[1,0]]).T
+    p2 = np.array([[1,1]]).T
+    p3 = np.array([[0,1]]).T
+    K = np.dot(R,D).dot(R.T)
+    u1 = solve(K,p1)
+    u2 = solve(K,p2)
+    u3 = solve(K,p3)
+    compl1 = np.dot(p1.T,u1)
+    compl2 = np.dot(p2.T,u2)
+    compl3 = np.dot(p3.T,u3)
+    volume = np.dot(e.T,xval)
+    V = 3.0
+    vol1 = volume-V
+    fval = np.concatenate((compl1,compl2,compl3,vol1))
+    rtu1 = np.dot(R.T,u1)
+    rtu2 = np.dot(R.T,u2)
+    rtu3 = np.dot(R.T,u3)
+    dcompl1 = -rtu1*rtu1
+    dcompl2 = -rtu2*rtu2
+    dcompl3 = -rtu3*rtu3
+    dfdx = np.concatenate((dcompl1.T,dcompl2.T,dcompl3.T,e.T))
     return f0val,df0dx,fval,dfdx
 
 
