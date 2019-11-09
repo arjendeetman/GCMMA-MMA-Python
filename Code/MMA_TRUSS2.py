@@ -2,7 +2,7 @@
 ### MMA OPTIMIZATION ALGORITM															             ### 
 ###                                                                                                  ###
 ### Arjen Deetman                                                                                    ###
-### version 02-11-2019                                                                               ###
+### version 09-11-2019                                                                               ###
 ########################################################################################################
 
 """
@@ -61,8 +61,7 @@ This script is the "three bar truss problem":
 
 # Loading modules
 from __future__ import division
-from scipy.sparse import diags
-from scipy.linalg import solve
+from scipy.linalg import solve # or use numpy: from numpy.linalg import solve
 import numpy as np
 import logging
 import sys

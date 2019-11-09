@@ -2,7 +2,7 @@
 ### MMA OPTIMIZATION ALGORITM															             ### 
 ###                                                                                                  ###
 ### Arjen Deetman                                                                                    ###
-### version 02-11-2019                                                                               ###
+### version 09-11-2019                                                                               ###
 ########################################################################################################
 
 """
@@ -18,8 +18,6 @@ Optimization of a simple function with one design variable and no contraint func
 
 # Loading modules
 from __future__ import division
-from scipy.sparse import diags
-from scipy.linalg import solve
 import numpy as np
 import logging
 import sys
