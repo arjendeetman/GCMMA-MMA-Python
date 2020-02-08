@@ -12,8 +12,8 @@ You should have received a copy of the GNU General Public License (file LICENSE)
 
 ## References
 
-Svanberg, K. (1987). The Method of Moving Asymptotes – A new method for structural optimization. International Journal 
-for Numerical Methods in Engineering 24, 359-373. doi:10.1002/nme.1620240207 
+[Svanberg, K. (1987). The Method of Moving Asymptotes – A new method for structural optimization. International Journal 
+for Numerical Methods in Engineering 24, 359-373.](https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.1620240207)
  
 Svanberg, K. (n.d.). MMA and GCMMA – two methods for nonlinear optimization. Retrieved August 3, 2017 from  
 https://people.kth.se/~krille/mmagcmma.pdf 
