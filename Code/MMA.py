@@ -1,12 +1,17 @@
 ﻿########################################################################################################
-### MMA OPTIMIZATION ALGORITM															             ### 
+### GCMMA-MMA-Python         															             ### 
 ###                                                                                                  ###
-### Arjen Deetman                                                                                    ###
+### This file is part of GCMMA-MMA-Python. GCMMA-MMA-Python is licensed under the terms of GNU       ###
+### General Public License as published by the Free Software Foundation. For more information and    ###
+### the LICENSE file, see <https://github.com/arjendeetman/GCMMA-MMA-Python>.                        ###
+###                                                                                                  ###
+### The orginal work is written by Krister Svanberg in MATLAB.                                       ###
+### This is the python version of the code written Arjen Deetman.                                    ###
 ### version 09-11-2019                                                                               ###
 ########################################################################################################
 
 """
-Orginal work Written by Krister Svanberg in Matlab. This is the python version of the code written
+Orginal work written by Krister Svanberg in Matlab. This is the python version of the code written
 by Arjen Deetman. 
 
 This file gives the functions mmasub, gcmmasub, subsolv and kktcheck. 
