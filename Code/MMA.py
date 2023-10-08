@@ -360,9 +360,9 @@ def subsolv(m,n,epsimin,low,upp,alfa,beta,p0,q0,P,Q,a0,a,b,c,d):
             stmalfa = np.max(stepalfa)
             stepbeta = 1.01*dx/(beta-x)
             stmbeta = np.max(stepbeta)
-            stmalbe = max(stmalfa,stmbeta)
-            stmalbexx = max(stmalbe,stmxx)
-            stminv = max(stmalbexx,1.0)
+            stmalbe = np.maximum(stmalfa,stmbeta)
+            stmalbexx = np.maximum(stmalbe,stmxx)
+            stminv = np.maximum(stmalbexx,1.0)
             steg = 1.0/stminv
             #
             xold = x.copy()
@@ -415,7 +415,7 @@ def subsolv(m,n,epsimin,low,upp,alfa,beta,p0,q0,P,Q,a0,a,b,c,d):
                 steg = steg/2
                 # End: while (resinew>residunorm) and (itto<50)
             residunorm = resinew.copy()
-            residumax = max(abs(residu))
+            residumax = np.max(abs(residu))
             steg = 2*steg
             # End: while (residumax>0.9*epsi) and (ittt<200)
         epsi = 0.1*epsi
