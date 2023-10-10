@@ -6,7 +6,7 @@
 ### the LICENSE file, see <https://github.com/arjendeetman/GCMMA-MMA-Python>.                        ###
 ###                                                                                                  ###
 ### The orginal work is written by Krister Svanberg in MATLAB.                                       ###
-### This is the python version of the code written Arjen Deetman.                                    ###
+### This is the Python implementation of the code written by Arjen Deetman.                          ###
 ### version 09-11-2019                                                                               ###
 ########################################################################################################
 

@@ -6,14 +6,14 @@
 ### the LICENSE file, see <https://github.com/arjendeetman/GCMMA-MMA-Python>.                        ###
 ###                                                                                                  ###
 ### The orginal work is written by Krister Svanberg in MATLAB.                                       ###
-### This is the python version of the code written Arjen Deetman.                                    ###
+### This is the Python implementation of the code written by Arjen Deetman.                          ###
 ### version 09-11-2019                                                                               ###
 ########################################################################################################
 
 
 """
-Orginal work written by Krister Svanberg in Matlab. This is the python version of the code written
-by Arjen Deetman. 
+Orginal work written by Krister Svanberg in Matlab. This is the Python implementation of the code 
+written by Arjen Deetman. 
 
 This script is the "three bar truss problem":
 
