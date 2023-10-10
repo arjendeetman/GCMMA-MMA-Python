@@ -2,9 +2,8 @@
 Python code of the Method of Moving Asymptotes ([Svanberg, 1987](https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.1620240207)). Based on the GCMMA-MMA-code written for MATLAB by Krister Svanberg. The original work was taken from http://www.smoptit.se/ under the GNU General Public License. If you download and use the code, Krister Svanberg would appreciate if you could send him an e-mail and tell who you are and what your plan is (e-mail adress can be found on his website). The user should reference to the academic work of Krister Svanberg when work will be published. References can be find below. An example application in topology optimization can be found [here](https://github.com/arjendeetman/TopOpt-MMA-Python).
 
 ## License
-Copyright notice: 
-- Original work written in MATLAB: Copyright (c) Krister Svanberg
-- Derived Python implementation: Copyright (c) 2020-2023 Arjen Deetman
+Original work written in MATLAB: Copyright (c) Krister Svanberg
+Derived Python implementation: Copyright (c) 2020-2023 Arjen Deetman
 
 GCMMA-MMA-Python is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
