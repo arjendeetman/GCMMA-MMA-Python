@@ -11,14 +11,10 @@
 ########################################################################################################
 
 """
-Orginal work written by Krister Svanberg in Matlab. This is the Python implementation of the code 
-written by Arjen Deetman. 
+Optimization of a simple function with one design variable and no contraint functions. 
 
-This script is the "toy problem":
-    minimize x(1)^2 + x(2)^2 + x(3)^2
-    subject to (x(1)-5)^2 + (x(2)-2)^2 + (x(3)-1)^2 =< 9
-               (x(1)-3)^2 + (x(2)-4)^2 + (x(3)-3)^2 =< 9
-               0 =< x(j) =< 5, for j=1,2,3.
+    minimize (x-50)^2+25
+    subjected to 1 =< x(j) =< 100, for j=1 
 """
 
 ########################################################################################################
@@ -33,7 +29,7 @@ import sys
 import os
 
 # Import MMA functions
-from MMA import mmasub,subsolv,kktcheck
+from mma import mmasub,subsolv,kktcheck
 
 
 ########################################################################################################
@@ -43,24 +39,24 @@ from MMA import mmasub,subsolv,kktcheck
 def main():
     # Logger
     path = os.path.dirname(os.path.realpath(__file__))
-    file = os.path.join(path, "MMA_TOY2.log")
+    file = os.path.join(path, "mma_function.log")
     logger = setup_logger(file)
     logger.info("Started\n")
     # Set numpy print options
     np.set_printoptions(precision=4, formatter={'float': '{: 0.4f}'.format})
-    # Beam initial settings
-    m = 2
-    n = 3
+    # Initial settings
+    m = 1
+    n = 1
     epsimin = 0.0000001
     eeen = np.ones((n,1))
     eeem = np.ones((m,1))
     zeron = np.zeros((n,1))
     zerom = np.zeros((m,1))
-    xval = np.array([[4,3,2]]).T
+    xval = 1*eeen
     xold1 = xval.copy()
     xold2 = xval.copy()
-    xmin = zeron.copy()
-    xmax = 5*eeen
+    xmin = eeen.copy()
+    xmax = 100*eeen
     low = xmin.copy()
     upp = xmax.copy()
     move = 1.0
@@ -69,14 +65,14 @@ def main():
     a0 = 1
     a = zerom.copy()
     outeriter = 0
-    maxoutit = 11
+    maxoutit = 20
     kkttol = 0		
     # Calculate function values and gradients of the objective and constraints functions
     if outeriter == 0:
-        f0val,df0dx,fval,dfdx = toy2(xval)
+        f0val,df0dx,fval,dfdx = funct(xval,n,eeen,zeron)
         innerit = 0
-        outvector1 = np.concatenate((np.array([outeriter]), xval.flatten()))
-        outvector2 = np.concatenate((np.array([f0val]),fval.flatten()))
+        outvector1 = np.array([outeriter, innerit, f0val, fval])
+        outvector2 = xval.flatten()
         # Log
         logger.info("outvector1 = {}".format(outvector1))
         logger.info("outvector2 = {}\n".format(outvector2))
@@ -94,18 +90,18 @@ def main():
         xold1 = xval.copy()
         xval = xmma.copy()
         # Re-calculate function values and gradients of the objective and constraints functions
-        f0val,df0dx,fval,dfdx = toy2(xval)
+        f0val,df0dx,fval,dfdx = funct(xval,n,eeen,zeron)
         # The residual vector of the KKT conditions is calculated
         residu,kktnorm,residumax = \
             kktcheck(m,n,xmma,ymma,zmma,lam,xsi,eta,mu,zet,s,xmin,xmax,df0dx,fval,dfdx,a0,a,c,d)
-        outvector1 = np.concatenate((np.array([outeriter]), xval.flatten()))
-        outvector2 = np.concatenate((np.array([f0val]),fval.flatten()))
+        outvector1 = np.array([outeriter, innerit, f0val, fval])
+        outvector2 = xval.flatten()
         # Log
         logger.info("outvector1 = {}".format(outvector1))
         logger.info("outvector2 = {}".format(outvector2))
         logger.info("kktnorm    = {}\n".format(kktnorm))
     # Final log
-    logger.info("Finished")
+    logger.info(" Finished")
 
 
 ########################################################################################################
@@ -135,16 +131,12 @@ def setup_logger(logfile):
     # Return logger
     return logger
 
-# Toy function
-def toy2(xval):
-    f0val = xval[0][0]**2+xval[1][0]**2+xval[2][0]**2
-    df0dx = 2*xval
-    fval1 = ((xval.T-np.array([[5, 2, 1]]))**2).sum()-9
-    fval2 = ((xval.T-np.array([[3, 4, 3]]))**2).sum()-9
-    fval = np.array([[fval1,fval2]]).T
-    dfdx1 = 2*(xval.T-np.array([[5, 2, 1]]))
-    dfdx2 = 2*(xval.T-np.array([[3, 4, 3]]))
-    dfdx = np.concatenate((dfdx1,dfdx2))
+# Beam function
+def funct(xval,n,eeen,zeron):
+    f0val = (xval.item()-50)**2+25
+    df0dx = eeen*(2*(xval.item()-50))
+    fval = 0.0
+    dfdx = zeron
     return f0val,df0dx,fval,dfdx
 
 

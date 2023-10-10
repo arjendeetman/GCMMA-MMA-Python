@@ -11,10 +11,14 @@
 ########################################################################################################
 
 """
-Optimization of a simple function with one design variable and no contraint functions. 
+Orginal work written by Krister Svanberg in Matlab. This is the Python implementation of the code 
+written by Arjen Deetman. 
 
-    minimize (x-50)^2+25
-    subjected to 1 =< x(j) =< 100, for j=1 
+This script is the "beam problem" from the MMA paper of Krister Svanberg. 
+
+    minimize 0.0624*(x(1) + x(2) + x(3) + x(4) + x(5))
+    subject to 61/(x(1)^3) + 37/(x(2)^3) + 19/(x(3)^3) +  7/(x(4)^3) +  1/(x(5)^3) =< 1,
+               1 =< x(j) =< 10, for j=1,..,5. 
 """
 
 ########################################################################################################
@@ -29,7 +33,7 @@ import sys
 import os
 
 # Import MMA functions
-from MMA import mmasub,subsolv,kktcheck
+from mma import mmasub,subsolv,kktcheck
 
 
 ########################################################################################################
@@ -39,24 +43,24 @@ from MMA import mmasub,subsolv,kktcheck
 def main():
     # Logger
     path = os.path.dirname(os.path.realpath(__file__))
-    file = os.path.join(path, "MMA_FUNCTION.log")
+    file = os.path.join(path, "mma_beam2.log")
     logger = setup_logger(file)
     logger.info("Started\n")
     # Set numpy print options
     np.set_printoptions(precision=4, formatter={'float': '{: 0.4f}'.format})
-    # Initial settings
+    # Beam initial settings
     m = 1
-    n = 1
+    n = 5
     epsimin = 0.0000001
     eeen = np.ones((n,1))
     eeem = np.ones((m,1))
     zeron = np.zeros((n,1))
     zerom = np.zeros((m,1))
-    xval = 1*eeen
+    xval = 5*eeen
     xold1 = xval.copy()
     xold2 = xval.copy()
     xmin = eeen.copy()
-    xmax = 100*eeen
+    xmax = 10*eeen
     low = xmin.copy()
     upp = xmax.copy()
     move = 1.0
@@ -65,11 +69,11 @@ def main():
     a0 = 1
     a = zerom.copy()
     outeriter = 0
-    maxoutit = 20
+    maxoutit = 11
     kkttol = 0		
     # Calculate function values and gradients of the objective and constraints functions
     if outeriter == 0:
-        f0val,df0dx,fval,dfdx = funct(xval,n,eeen,zeron)
+        f0val,df0dx,fval,dfdx = beam2(xval)
         innerit = 0
         outvector1 = np.array([outeriter, innerit, f0val, fval])
         outvector2 = xval.flatten()
@@ -90,7 +94,7 @@ def main():
         xold1 = xval.copy()
         xval = xmma.copy()
         # Re-calculate function values and gradients of the objective and constraints functions
-        f0val,df0dx,fval,dfdx = funct(xval,n,eeen,zeron)
+        f0val,df0dx,fval,dfdx = beam2(xval)
         # The residual vector of the KKT conditions is calculated
         residu,kktnorm,residumax = \
             kktcheck(m,n,xmma,ymma,zmma,lam,xsi,eta,mu,zet,s,xmin,xmax,df0dx,fval,dfdx,a0,a,c,d)
@@ -132,11 +136,21 @@ def setup_logger(logfile):
     return logger
 
 # Beam function
-def funct(xval,n,eeen,zeron):
-    f0val = (xval.item()-50)**2+25
-    df0dx = eeen*(2*(xval.item()-50))
-    fval = 0.0
-    dfdx = zeron
+def beam2(xval):
+    nx = 5
+    eeen = np.ones((nx,1))
+    c1 = 0.0624
+    c2 = 1
+    aaa = np.array([[61.0, 37.0, 19.0, 7.0, 1.0]]).T
+    xval2 = xval*xval
+    xval3 = xval2*xval
+    xval4 = xval2*xval2
+    xinv3 = eeen/xval3
+    xinv4 = eeen/xval4
+    f0val = c1*np.dot(eeen.T,xval).item()
+    df0dx = c1*eeen
+    fval = np.dot(aaa.T,xinv3).item()-c2
+    dfdx = -3*(aaa*xinv4).T
     return f0val,df0dx,fval,dfdx
 
 
