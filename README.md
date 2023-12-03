@@ -1,6 +1,16 @@
 # GCMMA-MMA-Python
 Python code of the Method of Moving Asymptotes ([Svanberg, 1987](https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.1620240207)). Based on the GCMMA-MMA-code written for MATLAB by Krister Svanberg. The original work was taken from http://www.smoptit.se/ under the GNU General Public License. If you download and use the code, Krister Svanberg would appreciate if you could send him an e-mail and tell who you are and what your plan is (e-mail adress can be found on his website). The user should reference to the academic work of Krister Svanberg when work will be published. References can be find below. An example application in topology optimization can be found [here](https://github.com/arjendeetman/TopOpt-MMA-Python).
 
+## Used in
+
+Morin, R., Kim, I.Y. Partitioning a topology-optimized structure into additively manufacturable parts using a feature-mapping approach: a novel decomposition optimization method. Struct Multidisc Optim 65, 298 (2022). [https://doi.org/10.1007/s00158-022-03394-8](https://link.springer.com/article/10.1007/s00158-022-03394-8)
+
+Frederiksen, A.H., Sigmund, O. & Poulios, K. Topology optimization of self-contacting structures. Comput Mech (2023). [https://doi.org/10.1007/s00466-023-02396-7](https://link.springer.com/article/10.1007/s00466-023-02396-7)
+
+Fernandes P, Ferrer À, Gonçalves P, Parente M, Pinto R, Correia N. Stress-Constrained Topology Optimization for Commercial Software: A Python Implementation for ABAQUS®. Applied Sciences. 2023; 13(23):12916. [https://doi.org/10.3390/app132312916](https://www.mdpi.com/2076-3417/13/23/12916)
+
+
+
 ## License
 Original work written in MATLAB: Copyright (c) Krister Svanberg
 
