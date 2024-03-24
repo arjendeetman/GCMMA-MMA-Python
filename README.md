@@ -1,6 +1,6 @@
 # GCMMA-MMA-Python
 
-This repository contains the Python code of the Method of Moving Asymptotes ([Svanberg, 1987](https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.1620240207)), originally developed and written in MATLAB by Krister Svanberg. The original work was taken from http://www.smoptit.se/ under the GNU General Public License. 
+This repository contains the Python code of the Method of Moving Asymptotes ([Svanberg, 1987](https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.1620240207)), originally developed and written in MATLAB by Krister Svanberg. The original MATLAB code was taken from http://www.smoptit.se/ under the GNU General Public License. 
 
 If you opt to use this code, Krister Svanberg would appreciate it if you could send him an email sharing your application and intentions (the email address can be found on his website). When work is published, the authors must cite Krister Svanberg's academic work. The references can be found below. 
 
