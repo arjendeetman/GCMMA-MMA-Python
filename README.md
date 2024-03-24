@@ -22,7 +22,7 @@ https://people.kth.se/~krille/mmagcmma.pdf
 ## License
 Original work written in MATLAB: Copyright (c) 2006-2009 Krister Svanberg
 
-Derived Python implementation: Copyright (c) 2020-2023 Arjen Deetman
+Derived Python implementation: Copyright (c) 2020-2024 Arjen Deetman
 
 GCMMA-MMA-Python is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
