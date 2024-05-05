@@ -20,8 +20,7 @@ https://people.kth.se/~krille/mmagcmma.pdf
 - Fernandes P, Ferrer À, Gonçalves P, Parente M, Pinto R, Correia N. Stress-Constrained Topology Optimization for Commercial Software: A Python Implementation for ABAQUS®. Applied Sciences. 2023; 13(23):12916. [https://doi.org/10.3390/app132312916](https://www.mdpi.com/2076-3417/13/23/12916)
 
 ## License
-Original work written in MATLAB: Copyright (c) 2006-2009 Krister Svanberg
-
+Original work written in MATLAB: Copyright (c) 2006-2009 Krister Svanberg\
 Derived Python implementation: Copyright (c) 2020-2024 Arjen Deetman
 
 GCMMA-MMA-Python is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
