@@ -6,13 +6,6 @@ If you opt to use this code, Krister Svanberg would appreciate it if you could s
 
 An example application of the code in topology optimization can be found [here](https://github.com/arjendeetman/TopOpt-MMA-Python).
 
-## References
-
-- Svanberg, K. (1987). The Method of Moving Asymptotes – A new method for structural optimization. International Journal 
-for Numerical Methods in Engineering 24, 359-373. [doi:10.1002/nme.1620240207](https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.1620240207)
- - Svanberg, K. (n.d.). MMA and GCMMA – two methods for nonlinear optimization. Retrieved August 3, 2017 from  
-https://people.kth.se/~krille/mmagcmma.pdf 
-
 ## Cite
 
 This repository is linked to Zenodo. To ensure accurate citation of this project and to allow for traceability in case of bugs or issues, please refer to the version of the project you used by including the DOI from Zenodo. You can cite the entire project as follows:
@@ -21,7 +14,14 @@ This repository is linked to Zenodo. To ensure accurate citation of this project
 Arjen Deetman. (2024). GCMMA-MMA-Python: Python implementation of the Method of Moving Asymptotes. Zenodo. https://doi.org/10.5281/zenodo.13197565
 ```
 
-For citing a specific version, please see the [Zenodo page](https://zenodo.org/records/13197566) for the corresponding DOI. Please also refer to the original work by Krister Svanberg. References can be find above. 
+For citing a specific version, please see the [Zenodo page](https://zenodo.org/records/13197566) for the corresponding DOI. Please also refer to the original work by Krister Svanberg. The references can be found below. 
+
+## References
+
+- Svanberg, K. (1987). The Method of Moving Asymptotes – A new method for structural optimization. International Journal 
+for Numerical Methods in Engineering 24, 359-373. [doi:10.1002/nme.1620240207](https://onlinelibrary.wiley.com/doi/abs/10.1002/nme.1620240207)
+ - Svanberg, K. (n.d.). MMA and GCMMA – two methods for nonlinear optimization. Retrieved August 3, 2017 from  
+https://people.kth.se/~krille/mmagcmma.pdf 
 
 ## License
 Original work written in MATLAB: Copyright (c) 2006-2009 Krister Svanberg\
