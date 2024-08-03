@@ -8,13 +8,7 @@ An example application of the code in topology optimization can be found [here](
 
 ## Cite
 
-This repository is linked to Zenodo. To ensure accurate citation of this project and to allow for traceability in case of bugs or issues, please refer to the version of the project you used by including the DOI from Zenodo. You can cite the entire project as follows:
-
-```
-Arjen Deetman. (2024). GCMMA-MMA-Python: Python implementation of the Method of Moving Asymptotes. Zenodo. https://doi.org/10.5281/zenodo.13197565
-```
-
-For citing a specific version, please see the [Zenodo page](https://zenodo.org/records/13197566) for the corresponding DOI. Please also refer to the original work by Krister Svanberg. The references can be found below. 
+This repository is linked to Zenodo. To ensure accurate citation of this project and facilitate traceability in case of bugs or issues, please refer to the specific version used, including the DOI from Zenodo. You can find the corresponding DOI on the [Zenodo page](https://zenodo.org/records/13197566). Additionally, cite the original work by Krister Svanberg. The relevant references are provided below.
 
 ## References
 
