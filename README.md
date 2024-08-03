@@ -13,12 +13,6 @@ for Numerical Methods in Engineering 24, 359-373. [doi:10.1002/nme.1620240207](h
  - Svanberg, K. (n.d.). MMA and GCMMA – two methods for nonlinear optimization. Retrieved August 3, 2017 from  
 https://people.kth.se/~krille/mmagcmma.pdf 
 
-## Used in
-
-- Morin, R., Kim, I.Y. Partitioning a topology-optimized structure into additively manufacturable parts using a feature-mapping approach: a novel decomposition optimization method. Struct Multidisc Optim 65, 298 (2022). [https://doi.org/10.1007/s00158-022-03394-8](https://link.springer.com/article/10.1007/s00158-022-03394-8)
-- Frederiksen, A.H., Sigmund, O. & Poulios, K. Topology optimization of self-contacting structures. Comput Mech (2023). [https://doi.org/10.1007/s00466-023-02396-7](https://link.springer.com/article/10.1007/s00466-023-02396-7)
-- Fernandes P, Ferrer À, Gonçalves P, Parente M, Pinto R, Correia N. Stress-Constrained Topology Optimization for Commercial Software: A Python Implementation for ABAQUS®. Applied Sciences. 2023; 13(23):12916. [https://doi.org/10.3390/app132312916](https://www.mdpi.com/2076-3417/13/23/12916)
-
 ## License
 Original work written in MATLAB: Copyright (c) 2006-2009 Krister Svanberg\
 Derived Python implementation: Copyright (c) 2020-2024 Arjen Deetman
