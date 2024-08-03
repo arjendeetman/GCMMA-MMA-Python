@@ -12,8 +12,8 @@
 
 	"title": "GCMMA-MMA-Python: Python implementation of the Method of Moving Asymptotes",
 
-	"description": "This record contains the Python code of the Method of Moving Asymptotes (Svanberg, 1987), originally developed and written in MATLAB by Krister Svanberg. If you opt to use this code, Krister Svanberg would appreciate it if you could send him an email sharing your application and intentions (the email address can be found on his website). When work is published, the authors must cite Krister Svanberg's academic work.",
-
+	"description": "This record contains the Python implementation of the Method of Moving Asymptotes (MMA), originally developed and written in MATLAB by Krister Svanberg. The MMA algorithm is used for solving non-linear programming problems. Users of this code are encouraged to inform Krister Svanberg of their application and intentions via email, as provided on his website. When publishing work that uses this code, please cite Krister Svanberg's original academic work.",
+	
 	"keywords": [
 		"mma",
 		"gcmma",
@@ -25,8 +25,8 @@
 	],
 
 	"references": [
-		"Svanberg, K. (1987). The Method of Moving Asymptotes – A new method for structural optimization. International Journal for Numerical Methods in Engineering 24, 359-373. doi:10.1002/nme.1620240207",
-		"Svanberg, K. (n.d.). MMA and GCMMA – two methods for nonlinear optimization. Retrieved August 3, 2017 from https://people.kth.se/~krille/mmagcmma.pdf"
+		"Svanberg, K. (1987). The Method of Moving Asymptotes – A new method for structural optimization. International Journal for Numerical Methods in Engineering, 24, 359-373. doi:10.1002/nme.1620240207",
+		"Svanberg, K. (n.d.). MMA and GCMMA – two methods for nonlinear optimization. Retrieved August 3, 2017, from https://people.kth.se/~krille/mmagcmma.pdf"
 	],
 	
 	"upload_type": "software"
