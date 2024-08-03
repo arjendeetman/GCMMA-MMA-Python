@@ -6,6 +6,16 @@ If you opt to use this code, Krister Svanberg would appreciate it if you could s
 
 An example application of the code in topology optimization can be found [here](https://github.com/arjendeetman/TopOpt-MMA-Python).
 
+## Cite
+
+This repository is linked to Zenodo. To ensure accurate citation of this project and to allow for traceability in case of bugs or issues, please refer to the version of the project you used by including the DOI from Zenodo. You can cite the entire project as follows:
+
+```
+Arjen Deetman. (2024). GCMMA-MMA-Python: Python implementation of the Method of Moving Asymptotes (v0.2.0). Zenodo. https://doi.org/10.5281/zenodo.13197565
+```
+
+For citing a specific version, please see the [Zenodo page](https://zenodo.org/records/13197566) for the corresponding DOI.
+
 ## References
 
 - Svanberg, K. (1987). The Method of Moving Asymptotes – A new method for structural optimization. International Journal 
