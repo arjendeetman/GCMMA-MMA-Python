@@ -8,7 +8,7 @@ An example application of the code in topology optimization can be found [here](
 
 ## Cite
 
-This repository is linked to Zenodo. To ensure accurate citation of this project and facilitate traceability in case of bugs or issues, please refer to the specific version used, including the DOI from Zenodo. You can find the corresponding DOI on the [Zenodo page](https://zenodo.org/records/13197566). Additionally, cite the original work by Krister Svanberg. The relevant references are provided below.
+This repository is linked to Zenodo. To ensure accurate citation of this project and facilitate traceability in case of bugs or issues, please refer to the specific version used, including the DOI from Zenodo. You can find the corresponding DOI on the [Zenodo page](https://zenodo.org/doi/10.5281/zenodo.13197565). Additionally, cite the original work by Krister Svanberg. The relevant references are provided below.
 
 ## References
 
