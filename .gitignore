@@ -262,3 +262,7 @@ __pycache__/
 
 # Rhinoceros
 *.3dmbak
+
+# Exclude PyPi
+gcmma_mma_python.egg-info
+dist/
