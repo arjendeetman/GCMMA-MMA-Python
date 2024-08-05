@@ -1,0 +1,44 @@
+[project]
+name = "gcmma-mma-python"
+version = "0.2.0"
+authors = [
+    { name = "Arjen Deetman", email = "info@arjendeetman.nl" }
+]
+description = "Python implementation of the Method of Moving Asymptotes (MMA)."
+license = { text = "GNU General Public License v3" }
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Operating System :: OS Independent",
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3 :: Only',
+]
+requires-python = ">=3.6"
+dependencies = ["numpy", "scipy"]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/arjendeetman/GCMMA-MMA-Python"
+Source = "https://github.com/arjendeetman/GCMMA-MMA-Python"
+Issues = "https://github.com/arjendeetman/GCMMA-MMA-Python/issues"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "dirty-tag"
+
+[tool.setuptools]
+license-files = ["LICENSE"]
