@@ -6,7 +6,7 @@ If you opt to use this code, Krister Svanberg would appreciate it if you could s
 
 An example application of the code in topology optimization can be found [here](https://github.com/arjendeetman/TopOpt-MMA-Python).
 
-## Installation and Usage
+## Installation and usage
 
 The `mmapy` package is available on [PyPi](https://pypi.org/project/mmapy/). To install it, use the following command:
 
