@@ -6,6 +6,20 @@ If you opt to use this code, Krister Svanberg would appreciate it if you could s
 
 An example application of the code in topology optimization can be found [here](https://github.com/arjendeetman/TopOpt-MMA-Python).
 
+## Installation and Usage
+
+The `mmapy` package is available on PyPi. To install it, use the following command:
+
+```bash
+pip install mmapy
+```
+
+After installation, you can import the package in your Python script with:
+
+```python
+import mmapy
+```
+
 ## Cite
 
 This repository is linked to Zenodo. To ensure accurate citation of this project and facilitate traceability in case of bugs or issues, please refer to the specific version used, including the DOI from Zenodo. You can find the corresponding DOI on the [Zenodo page](https://zenodo.org/doi/10.5281/zenodo.13197565). Additionally, cite the original work by Krister Svanberg. The relevant references are provided below.
