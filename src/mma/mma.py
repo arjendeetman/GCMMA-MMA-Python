@@ -167,7 +167,7 @@ def mmasub(m: int, n: int, iter: int, xval: np.ndarray, xmin: np.ndarray, xmax: 
 def gcmmasub(m: int, n: int, iter: int, epsimin: float, xval: np.ndarray, xmin: np.ndarray, 
              xmax: np.ndarray, low: np.ndarray, upp: np.ndarray, raa0: float, raa: np.ndarray, 
              f0val: np.ndarray, df0dx: np.ndarray, fval: np.ndarray, dfdx: np.ndarray, a0: float, 
-             a: np.ndarray, c: np.ndarray, d: np.ndarray) -> Tuple[np.ndarray, np.ndarray, 
+             a: np.ndarray, c: np.ndarray, d: np.ndarray, albefa: float = 0.1) -> Tuple[np.ndarray, np.ndarray, 
             float, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, float, float]:
     
     """
@@ -202,6 +202,7 @@ def gcmmasub(m: int, n: int, iter: int, epsimin: float, xval: np.ndarray, xmin: 
         a (np.ndarray): Coefficients for the constraints.
         c (np.ndarray): Coefficients for the linear terms in the objective function.
         d (np.ndarray): Coefficients for the quadratic terms in the objective function.
+        albefa (float): Factor to calculate the bounds alfa and beta. The default value is 0.1. 
 
     Returns:
         Tuple[np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, float, float]:
@@ -222,7 +223,6 @@ def gcmmasub(m: int, n: int, iter: int, epsimin: float, xval: np.ndarray, xmin: 
     zeron = np.zeros((n, 1))
 
     # Calculations of the bounds alfa and beta
-    albefa = 0.1
     zzz = low + albefa * (xval - low)
     alfa = np.maximum(zzz, xmin)
     zzz = upp - albefa * (upp - xval)
