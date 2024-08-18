@@ -20,7 +20,7 @@ This script solves the "beam problem" from the MMA paper of Krister Svanberg.
 
 # Loading modules
 from __future__ import division
-from mma import mmasub, kktcheck
+from mmapy import mmasub, kktcheck
 from util import setup_logger
 from typing import Tuple
 import numpy as np

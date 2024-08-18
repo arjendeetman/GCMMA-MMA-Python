@@ -1,6 +1,6 @@
 [project]
-name = "gcmma-mma-python"
-version = "0.1.99"
+name = "mmapy"
+version = "0.3.0"
 authors = [
     { name = "Arjen Deetman", email = "info@arjendeetman.nl" }
 ]
@@ -43,5 +43,5 @@ local_scheme = "dirty-tag"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-packages = ["mma"]
+packages = ["mmapy"]
 license-files = ["LICENSE"]

@@ -59,7 +59,7 @@ MMA Formulation:
 
 # Loading modules
 from __future__ import division
-from mma import mmasub, kktcheck
+from mmapy import mmasub, kktcheck
 from scipy.linalg import solve # or use numpy: from numpy.linalg import solve
 from util import setup_logger
 from typing import Tuple
