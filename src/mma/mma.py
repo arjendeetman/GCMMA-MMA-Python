@@ -1,4 +1,4 @@
-"""
+﻿"""
 GCMMA-MMA-Python
 
 This file is part of GCMMA-MMA-Python. GCMMA-MMA-Python is licensed under the terms of GNU 
@@ -687,7 +687,8 @@ def concheck(m: int, epsimin: np.ndarray, f0app: np.ndarray, f0valnew: np.ndarra
 
 def asymp(outeriter: int, n: int,xval: np.ndarray, xold1: np.ndarray, xold2: np.ndarray, xmin: np.ndarray,
     xmax: np.ndarray, low: np.ndarray, upp: np.ndarray, raa0: float, raa: np.ndarray, raa0eps: float,
-    raaeps: float, df0dx: np.ndarray, dfdx: np.ndarray) -> Tuple[np.ndarray, np.ndarray, float, np.ndarray]:
+    raaeps: float, df0dx: np.ndarray, dfdx: np.ndarray, asyinit: float = 0.5, asydecr: float = 0.7, 
+    asyincr: float = 1.2, asymin: float = 0.01, asymax: float = 10) -> Tuple[np.ndarray, np.ndarray, float, np.ndarray]:
     
     """
     Calculate the parameters raa0, raa, low, and upp at the beginning of each outer iteration.
@@ -708,6 +709,11 @@ def asymp(outeriter: int, n: int,xval: np.ndarray, xold1: np.ndarray, xold2: np.
         raaeps (float): Minimum value for raa.
         df0dx (np.ndarray): Gradient of the objective function.
         dfdx (np.ndarray): Gradient of the constraints.
+        asyinit (float): Factor to calculate the initial distance of the asymptotes. The default value is 0.5.
+        asydecr (float): Factor by which the asymptotes distance is decreased. The default value is 0.7.
+        asyincr (float): Factor by which the asymptotes distance is increased. The default value is 1.2.
+        asymin (float): Factor to calculate the minimum asymptote distance. The default value is 0.01.
+        asymax (float): Factor to calculate the maximum asymptote distance. The default value is 10. 
 
     Returns:
         Tuple[np.ndarray, np.ndarray, float, np.ndarray]:
@@ -718,9 +724,6 @@ def asymp(outeriter: int, n: int,xval: np.ndarray, xold1: np.ndarray, xold2: np.
     """
     
     eeen = np.ones((n, 1))
-    asyinit = 0.5
-    asyincr = 1.2
-    asydecr = 0.7
     xmami = xmax - xmin
     xmamieps = 0.00001 * eeen
     xmami = np.maximum(xmami, xmamieps)
@@ -739,10 +742,10 @@ def asymp(outeriter: int, n: int,xval: np.ndarray, xold1: np.ndarray, xold2: np.
         factor[xxx < 0] = asydecr
         low = xval - factor * (xold1 - low)
         upp = xval + factor * (upp - xold1)
-        lowmin = xval - 10 * xmami
-        lowmax = xval - 0.01 * xmami
-        uppmin = xval + 0.01 * xmami
-        uppmax = xval + 10 * xmami
+        lowmin = xval - asymax * xmami
+        lowmax = xval - asymin * xmami
+        uppmin = xval + asymin * xmami
+        uppmax = xval + asymax * xmami
         low = np.maximum(low, lowmin)
         low = np.minimum(low, lowmax)
         upp = np.minimum(upp, uppmax)
