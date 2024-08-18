@@ -38,7 +38,6 @@ def main() -> None:
     
     # Initial settings
     m, n = 1, 2
-    epsimin = 1e-7
     eeen = np.ones((n, 1))
     eeem = np.ones((m, 1))
     zeron = np.zeros((n, 1))
@@ -55,6 +54,7 @@ def main() -> None:
     d = eeem.copy()
     a0 = 1
     a = zerom.copy()
+    innerit = 0
     outeriter = 0
     maxoutit = 20
     kkttol = 0
@@ -62,7 +62,6 @@ def main() -> None:
     # Calculate function values and gradients of the objective and constraints functions
     if outeriter == 0:
         f0val, df0dx, fval, dfdx = funct(xval, n, eeen, zeron)
-        innerit = 0
         outvector1 = np.array([outeriter, innerit, f0val, fval])
         outvector2 = xval.flatten()
         

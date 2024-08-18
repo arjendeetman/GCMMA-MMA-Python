@@ -60,6 +60,7 @@ def main() -> None:
     raa = 0.01 * eeem
     raa0eps = 1e-6
     raaeps = 1e-6 * eeem
+    innerit = 0
     outeriter = 0
     maxoutit = 20
     kkttol = 0
@@ -67,7 +68,6 @@ def main() -> None:
     # Calculate function values and gradients of the objective and constraints functions
     if outeriter == 0:
         f0val, df0dx, fval, dfdx = beam2(xval)
-        innerit = 0
         outvector1 = np.array([outeriter, innerit, f0val, fval])
         outvector2 = xval.flatten()
         
@@ -129,8 +129,7 @@ def main() -> None:
         
         # The residual vector of the KKT conditions is calculated
         residu, kktnorm, residumax = kktcheck(
-            m, n, xmma, ymma, zmma, lam, xsi, eta, mu, zet, s, xmin, xmax, df0dx, fval, dfdx, a0, a, c, d
-        )
+            m, n, xmma, ymma, zmma, lam, xsi, eta, mu, zet, s, xmin, xmax, df0dx, fval, dfdx, a0, a, c, d)
         
         outvector1 = np.array([outeriter, innerit, f0val, fval])
         outvector2 = xval.flatten()
