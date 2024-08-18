@@ -8,7 +8,7 @@ An example application of the code in topology optimization can be found [here](
 
 ## Installation and Usage
 
-The `mmapy` package is available on PyPi. To install it, use the following command:
+The `mmapy` package is available on [PyPi](https://pypi.org/project/mmapy/). To install it, use the following command:
 
 ```bash
 pip install mmapy
