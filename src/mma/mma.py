@@ -1,4 +1,4 @@
-﻿"""
+"""
 GCMMA-MMA-Python
 
 This file is part of GCMMA-MMA-Python. GCMMA-MMA-Python is licensed under the terms of GNU 
@@ -32,9 +32,11 @@ import numpy as np
 def mmasub(m: int, n: int, iter: int, xval: np.ndarray, xmin: np.ndarray, xmax: np.ndarray,
            xold1: np.ndarray, xold2: np.ndarray, f0val: float,  df0dx: np.ndarray, fval: np.ndarray,
            dfdx: np.ndarray, low: np.ndarray, upp: np.ndarray, a0: float, a: np.ndarray, c: np.ndarray,
-           d: np.ndarray, move: float) -> Tuple[np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, 
-                                                np.ndarray, np.ndarray, float, np.ndarray, np.ndarray]:
-    
+           d: np.ndarray, move: float = 0.5, asyinit: float = 0.5, asydecr: float = 0.7, asyincr: float = 1.2, 
+           asymin: float = 0.01, asymax: float = 10, raa0: float = 0.00001, 
+           albefa: float = 0.1) -> Tuple[np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, np.ndarray, 
+                                         np.ndarray, float, np.ndarray, np.ndarray]:
+
     """
     Solve the MMA (Method of Moving Asymptotes) subproblem for optimization.
 
@@ -65,7 +67,14 @@ def mmasub(m: int, n: int, iter: int, xval: np.ndarray, xmin: np.ndarray, xmax: 
         a (np.ndarray): Coefficients for the term a_i * z.
         c (np.ndarray): Coefficients for the term c_i * y_i.
         d (np.ndarray): Coefficients for the term 0.5 * d_i * (y_i)^2.
-        move (float): Move limit for the design variables.
+        move (float): Move limit for the design variables. The default is 0.5.
+        asyinit (float): Factor to calculate the initial distance of the asymptotes. The default value is 0.5.
+        asydecr (float): Factor by which the asymptotes distance is decreased. The default value is 0.7.
+        asyincr (float): Factor by which the asymptotes distance is increased. The default value is 1.2.
+        asymin (float): Factor to calculate the minimum distance of the asymptotes. The default value is 0.01.
+        asymax (float): Factor to calculate the maximum distance of the asymptotes. The default value is 10. 
+        raa0 (float): Parameter representing the function approximation's accuracy. The default value is 0.00001.
+        albefa (float): Factor to calculate the bounds alfa and beta. The default value is 0.1. 
 
     Returns:
         Tuple[np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, np.ndarray, np.ndarray, float, np.ndarray, np.ndarray]:
@@ -83,11 +92,6 @@ def mmasub(m: int, n: int, iter: int, xval: np.ndarray, xmin: np.ndarray, xmax: 
     """
     
     epsimin = 0.0000001
-    raa0 = 0.00001
-    albefa = 0.1
-    asyinit = 0.5
-    asyincr = 1.2
-    asydecr = 0.7
     eeen = np.ones((n, 1), dtype=float)
     eeem = np.ones((m, 1), dtype=float)
     zeron = np.zeros((n, 1), dtype=float)
@@ -103,10 +107,10 @@ def mmasub(m: int, n: int, iter: int, xval: np.ndarray, xmin: np.ndarray, xmax: 
         factor[zzz < 0] = asydecr
         low = xval - factor * (xold1 - low)
         upp = xval + factor * (upp - xold1)
-        lowmin = xval - 10 * (xmax - xmin)
-        lowmax = xval - 0.01 * (xmax - xmin)
-        uppmin = xval + 0.01 * (xmax - xmin)
-        uppmax = xval + 10 * (xmax - xmin)
+        lowmin = xval - asymax * (xmax - xmin)
+        lowmax = xval - asymin * (xmax - xmin)
+        uppmin = xval + asymin * (xmax - xmin)
+        uppmax = xval + asymax * (xmax - xmin)
         low = np.maximum(low, lowmin)
         low = np.minimum(low, lowmax)
         upp = np.minimum(upp, uppmax)
