@@ -34,7 +34,7 @@ def mmasub(m: int, n: int, iter: int, xval: np.ndarray, xmin: np.ndarray, xmax: 
            dfdx: np.ndarray, low: np.ndarray, upp: np.ndarray, a0: float, a: np.ndarray, c: np.ndarray,
            d: np.ndarray, move: float = 0.5, asyinit: float = 0.5, asydecr: float = 0.7, asyincr: float = 1.2, 
            asymin: float = 0.01, asymax: float = 10, raa0: float = 0.00001, 
-           albefa: float = 0.1) -> Tuple[np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, np.ndarray, 
+           albefa: float = 0.1, **kwargs) -> Tuple[np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, np.ndarray, 
                                          np.ndarray, float, np.ndarray, np.ndarray]:
 
     """
@@ -167,7 +167,7 @@ def mmasub(m: int, n: int, iter: int, xval: np.ndarray, xmin: np.ndarray, xmax: 
 def gcmmasub(m: int, n: int, iter: int, epsimin: float, xval: np.ndarray, xmin: np.ndarray, 
              xmax: np.ndarray, low: np.ndarray, upp: np.ndarray, raa0: float, raa: np.ndarray, 
              f0val: np.ndarray, df0dx: np.ndarray, fval: np.ndarray, dfdx: np.ndarray, a0: float, 
-             a: np.ndarray, c: np.ndarray, d: np.ndarray, albefa: float = 0.1) -> Tuple[np.ndarray, np.ndarray, 
+             a: np.ndarray, c: np.ndarray, d: np.ndarray, albefa: float = 0.1, **kwargs) -> Tuple[np.ndarray, np.ndarray, 
             float, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, float, float]:
     
     """
@@ -287,7 +287,7 @@ def gcmmasub(m: int, n: int, iter: int, epsimin: float, xval: np.ndarray, xmin: 
 
 def subsolv(m: int, n: int, epsimin: float, low: np.ndarray, upp: np.ndarray, alfa: np.ndarray, 
             beta: np.ndarray, p0: np.ndarray, q0: np.ndarray, P: np.ndarray, Q: np.ndarray, 
-            a0: float, a: np.ndarray, b: np.ndarray, c: np.ndarray, d: np.ndarray) -> Tuple[np.ndarray, 
+            a0: float, a: np.ndarray, b: np.ndarray, c: np.ndarray, d: np.ndarray, **kwargs) -> Tuple[np.ndarray, 
             np.ndarray, float, np.ndarray, np.ndarray, np.ndarray, float, np.ndarray, np.ndarray]:
     
     """
@@ -528,7 +528,7 @@ def subsolv(m: int, n: int, epsimin: float, low: np.ndarray, upp: np.ndarray, al
 def kktcheck(m: int, n: int, x: np.ndarray, y: np.ndarray, z: float, lam: np.ndarray, xsi: np.ndarray,
             eta: np.ndarray, mu: np.ndarray, zet: float, s: np.ndarray, xmin: np.ndarray, xmax: np.ndarray,
             df0dx: np.ndarray, fval: np.ndarray, dfdx: np.ndarray, a0: float, a: np.ndarray, c: np.ndarray,
-            d: np.ndarray) -> Tuple[np.ndarray, float, float]:
+            d: np.ndarray, **kwargs) -> Tuple[np.ndarray, float, float]:
     
     """
     Evaluate the residuals for the Karush-Kuhn-Tucker (KKT) conditions of a nonlinear programming problem.
@@ -589,7 +589,7 @@ def kktcheck(m: int, n: int, x: np.ndarray, y: np.ndarray, z: float, lam: np.nda
 
 def raaupdate(xmma: np.ndarray, xval: np.ndarray, xmin: np.ndarray, xmax: np.ndarray, low: np.ndarray, upp: np.ndarray, 
               f0valnew: np.ndarray, fvalnew: np.ndarray, f0app: np.ndarray, fapp: np.ndarray, raa0: np.ndarray, 
-              raa: np.ndarray, raa0eps: np.ndarray, raaeps: np.ndarray,  epsimin: float) -> Tuple[np.ndarray, np.ndarray]:
+              raa: np.ndarray, raa0eps: np.ndarray, raaeps: np.ndarray,  epsimin: float, **kwargs) -> Tuple[np.ndarray, np.ndarray]:
     
     """
     Update the parameters raa0 and raa during an inner iteration.
@@ -650,7 +650,7 @@ def raaupdate(xmma: np.ndarray, xval: np.ndarray, xmin: np.ndarray, xmax: np.nda
     return raa0, raa
 
 
-def concheck(m: int, epsimin: np.ndarray, f0app: np.ndarray, f0valnew: np.ndarray, fapp: np.ndarray, fvalnew: np.ndarray) -> int:
+def concheck(m: int, epsimin: np.ndarray, f0app: np.ndarray, f0valnew: np.ndarray, fapp: np.ndarray, fvalnew: np.ndarray, **kwargs) -> int:
     
     """
     Check if the current approximations are conservative.
@@ -688,7 +688,7 @@ def concheck(m: int, epsimin: np.ndarray, f0app: np.ndarray, f0valnew: np.ndarra
 def asymp(outeriter: int, n: int,xval: np.ndarray, xold1: np.ndarray, xold2: np.ndarray, xmin: np.ndarray,
     xmax: np.ndarray, low: np.ndarray, upp: np.ndarray, raa0: float, raa: np.ndarray, raa0eps: float,
     raaeps: float, df0dx: np.ndarray, dfdx: np.ndarray, asyinit: float = 0.5, asydecr: float = 0.7, 
-    asyincr: float = 1.2, asymin: float = 0.01, asymax: float = 10) -> Tuple[np.ndarray, np.ndarray, float, np.ndarray]:
+    asyincr: float = 1.2, asymin: float = 0.01, asymax: float = 10, **kwargs)-> Tuple[np.ndarray, np.ndarray, float, np.ndarray]:
     
     """
     Calculate the parameters raa0, raa, low, and upp at the beginning of each outer iteration.
